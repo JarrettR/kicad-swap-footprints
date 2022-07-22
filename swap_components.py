@@ -1,5 +1,10 @@
 """
 Swaps the location of two selected components
+
+Written by Jarrett Rainier, (c) 2022
+
+https://github.com/JarrettR/kicad-swap-footprints
+
 """
 import pcbnew
 
