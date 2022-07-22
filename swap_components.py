@@ -16,11 +16,19 @@ class ComponentSwap(pcbnew.ActionPlugin):
     def Run(self):
         pcb = pcbnew.GetBoard()
         
+        kicad5 = pcbnew.GetBuildVersion().startswith('5')
+        
         #
         selectedMods = []
-        for mod in pcb.GetModules():
-            if mod.IsSelected():
-                selectedMods.append(mod)
+        
+        if kicad5:
+            for mod in pcb.GetModules():
+                if mod.IsSelected():
+                    selectedMods.append(mod)
+        else:
+            for mod in pcb.GetFootprints():
+                if mod.IsSelected():
+                    selectedMods.append(mod)
                 
         length = len(selectedMods)
         newPos = []
