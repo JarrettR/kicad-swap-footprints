@@ -21,7 +21,7 @@ class ComponentSwap(pcbnew.ActionPlugin):
     def Run(self):
         pcb = pcbnew.GetBoard()
         
-        kicad5 = pcbnew.GetBuildVersion().startswith('5')
+        kicad5 = str(pcbnew.GetBuildVersion()).strip('(').startswith('5')
         
         #
         selectedMods = []
